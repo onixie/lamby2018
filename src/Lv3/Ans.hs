@@ -22,13 +22,19 @@ import Data.Array ( Array
 import Control.Arrow ( right
                      )
 
+import Data.Maybe ( isNothing, isJust
+                  )
+
+import Data.List ( partition
+                 )
+
 type Id = Int
 data Claim = Claim { id :: Id
                    , x :: Int
                    , y :: Int
                    , width :: Int
                    , height :: Int
-                   } deriving (Show)
+                   } deriving (Show, Eq)
 
 loadClaims :: IO (Either ParseError [Claim])
 loadClaims = readFile "input.txt" >>= return . parseClaims
@@ -52,17 +58,8 @@ parseClaims text = parse claims "" text
       height <- read <$> many digit
       return $ Claim id x y width height
 
--- overlap :: Claim -> Claim -> Maybe (Int, Int, Int, Int)
--- overlap (Claim id left top width height) (Claim id' left' top' width' height') =
---   do (ovLeft, ovRight) <- overlapping left (left + width) left' (left' + width')
---      (ovTop, ovBottom) <- overlapping top (top + height) top' (top' + height')
---      return (ovLeft, ovTop, ovRight - ovLeft, ovBottom - ovTop)
---   where 
---     overlapping s1 e1 s2 e2 = -- assume s1 > e1, s2 > e2
---       let s' = s1 `max` s2
---           e' = e1 `min` e2 in
---         if s' < e' then Just (s', e') else Nothing
 
+-- part 1
 type Bound = ((Int, Int), (Int, Int))
 bound :: [Claim] -> Bound
 bound = foldr (\(Claim _ x y width height) ((lx, ly), (hx, hy)) -> 
@@ -85,4 +82,21 @@ squareInchesOfOverlapping = ((length . filter (>1) . elems) .) . patchAll
 
 answerOfLv3Part1 = loadClaims >>= return . right (squareInchesOfOverlapping =<< (fabric . bound))
 
-answerOfLv3Part2 = undefined
+-- part2
+overlap :: Claim -> Claim -> Maybe (Int, Int, Int, Int)
+overlap (Claim id left top width height) (Claim id' left' top' width' height') =
+  do (ovLeft, ovRight) <- overlapping left (left + width - 1) left' (left' + width' - 1)
+     (ovTop, ovBottom) <- overlapping top (top + height - 1) top' (top' + height' - 1)
+     return (ovLeft, ovTop, ovRight - ovLeft + 1, ovBottom - ovTop + 1)
+  where 
+    overlapping s1 e1 s2 e2 = -- assume: s1 > e1, s2 > e2
+      let s' = s1 `max` s2
+          e' = e1 `min` e2 in
+        if s' <= e' then Just (s', e') else Nothing
+
+findUniqueClaim :: (Claim -> Claim -> Bool) -> [Claim] -> Maybe Claim
+findUniqueClaim f (c:cs) = case all (f c) cs of
+                             False -> findUniqueClaim f (cs++[c]) -- assume: there must be an answer ;P
+                             True -> return c
+
+answerOfLv3Part2 = loadClaims >>= return . right (findUniqueClaim ((isNothing .) . overlap))
