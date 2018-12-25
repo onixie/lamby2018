@@ -24,6 +24,7 @@ dependencies:
 - parsec
 - array
 - time
+- containers
 
 library:
   source-dirs: src
