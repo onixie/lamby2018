@@ -2,8 +2,9 @@ module Lv8.Ans () where
 
 import Text.ParserCombinators.Parsec (ParseError, parse, many1, many, digit, sepEndBy, space )
 import Control.Arrow (right)
+import Data.Ix (inRange)
 import Data.List (splitAt)
-import qualified Data.Tree as T (Tree(..), flatten)
+import qualified Data.Tree as T (Tree(..), flatten, foldTree, drawTree)
 import Control.Exception (assert)
 
 loadLicenseFile :: FilePath -> IO (Either ParseError [Int])
@@ -36,3 +37,14 @@ answerOfLv8Part1 = do Right serialNumbers <- loadLicenseFile "input.txt"
                       let allMetaEntries = assert (rest == []) $ concatMap metaEntries (T.flatten root)
                       return $ foldl1 (+) allMetaEntries
 
+calcValue (Node (numOfChildren, numOfMetaEntries) metaEntries) subValues = foldl (+) 0 values
+  where 
+    values = if numOfChildren == 0
+             then metaEntries
+             else map (subValues!!) (filter (inRange (0, numOfChildren - 1)) (map (negate 1+) metaEntries))
+
+answerOfLv8Part2 = do Right serialNumbers <- loadLicenseFile "input.txt"
+                      (root, rest) <- buildTree serialNumbers
+                      -- putStr $ T.drawTree $ fmap show root 
+                      return . assert (rest == []) $ T.foldTree calcValue root
+                      
