@@ -1,4 +1,4 @@
-module Lv9.Ans (answerOfLv9Part1, answerOfLv9Part2) where
+module Lv9.Ans (answerOfLv9Part1, answerOfLv9Part2, answerOfLv9Part) where
 
 import Text.ParserCombinators.ReadP (char, sepBy, endBy, ReadP, many1, satisfy, string, readP_to_S)
 import Data.Char (isDigit)
@@ -44,9 +44,9 @@ updatePlayer game@(MkGame players circle@(Circle current marbles extraScore) nex
 updateCircle game@(MkGame _ circle@(Circle current marbles _) nextMarble _ _)
   | nextMarble `rem` 23 == 0 = let next = goCounterClockWise (length marbles) current 7
                                    succNext = goClockWise (length marbles) next 1 in
-                                 game { circle = Circle (if succNext == 0 then succNext else next) (take next marbles ++ drop (next+1) marbles) (Just (marbles!!next))}
+                                 game { circle = {-# SCC updateCircle23 #-} Circle (if succNext == 0 then succNext else next) (take next marbles ++ drop (next+1) marbles) (Just (marbles!!next))}
   | otherwise = let next = goClockWise (length marbles) current 1 + 1 in
-                  game { circle = Circle next (take next marbles ++ [nextMarble] ++ drop next marbles) Nothing }
+                  game { circle = {-# SCC updateCircle0 #-} Circle next (take next marbles ++ [nextMarble] ++ drop next marbles) Nothing }
 
 goClockWise count current n = (current + n) `rem` count
 
@@ -57,5 +57,6 @@ goCounterClockWise count current n = let res = current - n in
                                        then 0
                                        else count + res `rem` count
 
-answerOfLv9Part1 = (loadGames "input.txt") >>= return . maximumBy ((.score) . compare . score) . players . play . (!!0)
-answerOfLv9Part2 = (loadGames "input.txt") >>= return . maximumBy ((.score) . compare . score) . players . play . (!!1)
+answerOfLv9Part1 = answerOfLv9Part "input.txt" 1
+answerOfLv9Part2 = answerOfLv9Part "input.txt" 2
+answerOfLv9Part filePath n = (loadGames filePath) >>= return . maximumBy ((.score) . compare . score) . players . play . (!!(n-1))
