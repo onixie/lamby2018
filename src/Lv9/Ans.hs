@@ -5,12 +5,13 @@ import Data.Char (isDigit)
 import Data.List (maximumBy)
 import Data.Array (Array, array, (//), (!))
 import Data.Maybe (isJust, fromJust)
+import Data.Sequence (deleteAt, fromList, insertAt, singleton, index, Seq)
 
 type Id = Int
 type Score = Int
 type Marble = Int
 data Player = Player { pid :: Id, score :: Score } deriving ( Show )
-data Circle = Circle { current :: Int, marbles :: [Marble], removed :: Maybe Marble } deriving ( Show )
+data Circle = Circle { current :: Int, marbles :: Seq Marble, removed :: Maybe Marble } deriving ( Show )
 data MarbleGame = MkGame { players :: Array Int Player, circle :: Circle, nextMarble :: Marble, lastMarble :: Marble, numOfPlayers :: Int } deriving ( Show )
 
 loadGame filePath = readFile filePath >>= return . fst . (!!0) . readP_to_S readGame
@@ -27,7 +28,7 @@ readGame = do
   where
     number = many1 (satisfy isDigit)
 
-gameWith numOfPlayers lastMarble = MkGame (array (1, numOfPlayers) [(id, Player id 0) | id <- [1..numOfPlayers]]) (Circle 0 [0] Nothing) 1 lastMarble numOfPlayers
+gameWith numOfPlayers lastMarble = MkGame (array (1, numOfPlayers) [(id, Player id 0) | id <- [1..numOfPlayers]]) (Circle 0 (singleton 0) Nothing) 1 lastMarble numOfPlayers
 
 play :: MarbleGame -> MarbleGame
 play game@(MkGame players circle nextMarble lastMarble _) | nextMarble > lastMarble = game
@@ -44,9 +45,15 @@ updatePlayer game@(MkGame players circle@(Circle current marbles extraScore) nex
 updateCircle game@(MkGame _ circle@(Circle current marbles _) nextMarble _ _)
   | nextMarble `rem` 23 == 0 = let next = goCounterClockWise (length marbles) current 7
                                    succNext = goClockWise (length marbles) next 1 in
-                                 game { circle = {-# SCC updateCircle23 #-} Circle (if succNext == 0 then succNext else next) (take next marbles ++ drop (next+1) marbles) (Just (marbles!!next))}
+                                 game { circle = {-# SCC updateCircle23 #-} Circle (if succNext == 0 then succNext else next) 
+                                                                                   (deleteAt next marbles) -- (take next marbles ++ drop (next+1) marbles)
+                                                                                   (Just (marbles `index` next))}
   | otherwise = let next = goClockWise (length marbles) current 1 + 1 in
-                  game { circle = {-# SCC updateCircle0 #-} Circle next (take next marbles ++ [nextMarble] ++ drop next marbles) Nothing }
+                  game { circle = {-# SCC updateCircle0 #-} 
+                           Circle next 
+                                  (insertAt next nextMarble marbles) -- (take next marbles ++ [nextMarble] ++ drop next marbles) 
+                                  Nothing
+                       }
 
 goClockWise count current n = (current + n) `rem` count
 

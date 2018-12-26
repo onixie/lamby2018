@@ -1,84 +1,89 @@
-	Thu Dec 27 00:28 2018 Time and Allocation Profiling Report  (Final)
+	Thu Dec 27 00:46 2018 Time and Allocation Profiling Report  (Final)
 
 	   λy2018-exe +RTS -N -p -RTS
 
-	total time  =        0.13 secs   (531 ticks @ 1000 us, 4 processors)
-	total alloc = 949,888,400 bytes  (excludes profiling overheads)
+	total time  =        0.00 secs   (19 ticks @ 1000 us, 4 processors)
+	total alloc =   8,667,064 bytes  (excludes profiling overheads)
 
-COST CENTRE       MODULE  SRC                       %time %alloc
+COST CENTRE       MODULE  SRC                              %time %alloc
 
-updateCircle0     Lv9.Ans src/Lv9/Ans.hs:49:61-136   67.8   95.4
-updateCircle.next Lv9.Ans src/Lv9/Ans.hs:48:21-69    22.8    0.0
-updateCircle23    Lv9.Ans src/Lv9/Ans.hs:47:77-193    6.4    4.3
-MAIN              MAIN    <built-in>                  1.1    0.0
+MAIN              MAIN    <built-in>                        31.6    0.9
+updateCircle0     Lv9.Ans src/Lv9/Ans.hs:(53,28)-(55,41)    26.3   72.7
+loadGames         Lv9.Ans src/Lv9/Ans.hs:19:1-104           15.8    0.4
+play              Lv9.Ans src/Lv9/Ans.hs:(34,1)-(35,127)    15.8    7.6
+updateCircle23    Lv9.Ans src/Lv9/Ans.hs:(48,77)-(50,112)   10.5    3.4
+updateRound       Lv9.Ans src/Lv9/Ans.hs:37:1-60             0.0    1.5
+updatePlayer      Lv9.Ans src/Lv9/Ans.hs:(39,1)-(43,75)      0.0    1.0
+updateCircle      Lv9.Ans src/Lv9/Ans.hs:(45,1)-(56,24)      0.0    9.9
+updateCircle.next Lv9.Ans src/Lv9/Ans.hs:51:21-69            0.0    1.4
 
 
-                                                                                                        individual      inherited
-COST CENTRE                   MODULE                  SRC                            no.     entries  %time %alloc   %time %alloc
+                                                                                                         individual      inherited
+COST CENTRE                   MODULE                  SRC                             no.     entries  %time %alloc   %time %alloc
 
-MAIN                          MAIN                    <built-in>                     174          0    1.1    0.0   100.0  100.0
- CAF                          GHC.Conc.Signal         <entire-module>                268          0    0.0    0.0     0.0    0.0
- CAF                          GHC.IO.Encoding         <entire-module>                251          0    0.2    0.0     0.2    0.0
- CAF                          GHC.IO.Encoding.Iconv   <entire-module>                249          0    0.0    0.0     0.0    0.0
- CAF                          GHC.IO.Exception        <entire-module>                243          0    0.0    0.0     0.0    0.0
- CAF                          GHC.IO.FD               <entire-module>                242          0    0.0    0.0     0.0    0.0
- CAF                          GHC.IO.Handle.FD        <entire-module>                240          0    0.0    0.0     0.0    0.0
- CAF                          GHC.IO.Handle.Internals <entire-module>                239          0    0.0    0.0     0.0    0.0
- CAF                          GHC.IO.Handle.Text      <entire-module>                238          0    0.0    0.0     0.0    0.0
- CAF                          GHC.Show                <entire-module>                222          0    0.0    0.0     0.0    0.0
- CAF                          System.Posix.Internals  <entire-module>                208          0    0.0    0.0     0.0    0.0
- CAF                          Text.Read.Lex           <entire-module>                203          0    0.0    0.0     0.0    0.0
- CAF                          GHC.Event.Poll          <entire-module>                191          0    0.0    0.0     0.0    0.0
- CAF                          GHC.Event.Thread        <entire-module>                190          0    0.0    0.0     0.0    0.0
- CAF:$fShowCircle2            Lv9.Ans                 <no location info>             292          0    0.0    0.0     0.0    0.0
- CAF:$fShowPlayer2            Lv9.Ans                 <no location info>             291          0    0.0    0.0     0.0    0.0
- CAF:$fShowPlayer4            Lv9.Ans                 <no location info>             290          0    0.0    0.0     0.0    0.0
- CAF:$fShowPlayer6            Lv9.Ans                 <no location info>             289          0    0.0    0.0     0.0    0.0
- CAF:$fShowPlayer8            Lv9.Ans                 <no location info>             293          0    0.0    0.0     0.0    0.0
-  showsPrec                   Lv9.Ans                 src/Lv9/Ans.hs:12:63-66        385          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv9Part6         Lv9.Ans                 <no location info>             302          0    0.0    0.0     0.0    0.0
-  answerOfLv9Part             Lv9.Ans                 src/Lv9/Ans.hs:62:1-130        355          0    0.0    0.0     0.0    0.0
-   loadGames                  Lv9.Ans                 src/Lv9/Ans.hs:18:1-104        356          0    0.0    0.0     0.0    0.0
-    readGame                  Lv9.Ans                 src/Lv9/Ans.hs:(21,1)-(28,36)  358          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv9Part9         Lv9.Ans                 <no location info>             301          0    0.0    0.0     0.0    0.0
-  readGame                    Lv9.Ans                 src/Lv9/Ans.hs:(21,1)-(28,36)  357          1    0.0    0.0     0.0    0.0
- CAF:lvl11_r8cp               Lv9.Ans                 <no location info>             300          0    0.0    0.0     0.0    0.0
-  readGame                    Lv9.Ans                 src/Lv9/Ans.hs:(21,1)-(28,36)  364          0    0.0    0.0     0.0    0.0
- CAF:lvl2_r8cg                Lv9.Ans                 <no location info>             295          0    0.0    0.0     0.0    0.0
- CAF:lvl8_r8cm                Lv9.Ans                 <no location info>             297          0    0.0    0.0     0.0    0.0
- CAF:main1                    Main                    <no location info>             346          0    0.0    0.0     0.0    0.0
-  main                        Main                    app/Main.hs:6:1-85             348          1    0.0    0.0     0.0    0.0
- CAF:main2                    Main                    <no location info>             345          0    0.0    0.0     0.0    0.0
-  main                        Main                    app/Main.hs:6:1-85             350          0    0.0    0.0     0.0    0.0
-   answerOfLv9Part            Lv9.Ans                 src/Lv9/Ans.hs:62:1-130        351          1    0.0    0.0     0.0    0.0
- CAF:main4                    Main                    <no location info>             344          0    0.0    0.0     0.0    0.0
- CAF:number_r8ce              Lv9.Ans                 <no location info>             294          0    0.0    0.0     0.0    0.0
-  readGame                    Lv9.Ans                 src/Lv9/Ans.hs:(21,1)-(28,36)  359          0    0.0    0.0     0.0    0.0
-   readGame.number            Lv9.Ans                 src/Lv9/Ans.hs:28:5-36         360          1    0.0    0.0     0.0    0.0
- main                         Main                    app/Main.hs:6:1-85             349          0    0.0    0.0    98.7  100.0
-  showsPrec                   Lv9.Ans                 src/Lv9/Ans.hs:12:63-66        384          1    0.0    0.0     0.0    0.0
-  answerOfLv9Part             Lv9.Ans                 src/Lv9/Ans.hs:62:1-130        352          0    0.0    0.0    98.7  100.0
-   play                       Lv9.Ans                 src/Lv9/Ans.hs:(33,1)-(34,127) 365       8000    0.0    0.1    98.3  100.0
-    updateCircle              Lv9.Ans                 src/Lv9/Ans.hs:(44,1)-(49,138) 366       7999    0.2    0.1    97.7   99.9
-     updateCircle0            Lv9.Ans                 src/Lv9/Ans.hs:49:61-136       367       7652   67.8   95.4    67.8   95.4
-     updateCircle.next        Lv9.Ans                 src/Lv9/Ans.hs:48:21-69        380       7634   22.8    0.0    22.8    0.0
-      goClockWise             Lv9.Ans                 src/Lv9/Ans.hs:51:1-55         381       7634    0.0    0.0     0.0    0.0
-     updateCircle.next        Lv9.Ans                 src/Lv9/Ans.hs:45:36-87        377        347    0.0    0.0     0.0    0.0
-      goCounterClockWise      Lv9.Ans                 src/Lv9/Ans.hs:(53,1)-(58,67)  378        347    0.0    0.0     0.0    0.0
-       goCounterClockWise.res Lv9.Ans                 src/Lv9/Ans.hs:53:42-58        379        347    0.0    0.0     0.0    0.0
-     updateCircle23           Lv9.Ans                 src/Lv9/Ans.hs:47:77-193       371        347    6.4    4.3     6.4    4.3
-     updateCircle.succNext    Lv9.Ans                 src/Lv9/Ans.hs:46:36-81        382        346    0.6    0.0     0.6    0.0
-      goClockWise             Lv9.Ans                 src/Lv9/Ans.hs:51:1-55         383        346    0.0    0.0     0.0    0.0
-    updatePlayer              Lv9.Ans                 src/Lv9/Ans.hs:(38,1)-(42,75)  368       7999    0.2    0.0     0.2    0.0
-     pid                      Lv9.Ans                 src/Lv9/Ans.hs:12:24-26        372        347    0.0    0.0     0.0    0.0
-     score                    Lv9.Ans                 src/Lv9/Ans.hs:12:35-39        376        347    0.0    0.0     0.0    0.0
-     updatePlayer.nextPlayer  Lv9.Ans                 src/Lv9/Ans.hs:42:5-75         373        347    0.0    0.0     0.0    0.0
-      numOfPlayers            Lv9.Ans                 src/Lv9/Ans.hs:14:119-130      374        347    0.0    0.0     0.0    0.0
-    updateRound               Lv9.Ans                 src/Lv9/Ans.hs:36:1-60         369       7999    0.4    0.0     0.4    0.0
-     nextMarble               Lv9.Ans                 src/Lv9/Ans.hs:14:75-84        370       7999    0.0    0.0     0.0    0.0
-   score                      Lv9.Ans                 src/Lv9/Ans.hs:12:35-39        375         24    0.0    0.0     0.0    0.0
-   loadGames                  Lv9.Ans                 src/Lv9/Ans.hs:18:1-104        353          1    0.4    0.0     0.4    0.0
-    readGame                  Lv9.Ans                 src/Lv9/Ans.hs:(21,1)-(28,36)  361          0    0.0    0.0     0.0    0.0
-     readGame.number          Lv9.Ans                 src/Lv9/Ans.hs:28:5-36         362          0    0.0    0.0     0.0    0.0
-      gameWith                Lv9.Ans                 src/Lv9/Ans.hs:30:1-162        363          1    0.0    0.0     0.0    0.0
-   players                    Lv9.Ans                 src/Lv9/Ans.hs:14:28-34        354          1    0.0    0.0     0.0    0.0
+MAIN                          MAIN                    <built-in>                      195          0   31.6    0.9   100.0  100.0
+ CAF                          GHC.Conc.Signal         <entire-module>                 291          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Encoding         <entire-module>                 273          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Encoding.Iconv   <entire-module>                 271          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Exception        <entire-module>                 265          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.FD               <entire-module>                 264          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Handle.FD        <entire-module>                 262          0    0.0    0.4     0.0    0.4
+ CAF                          GHC.IO.Handle.Internals <entire-module>                 261          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.IO.Handle.Text      <entire-module>                 260          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.Show                <entire-module>                 244          0    0.0    0.0     0.0    0.0
+ CAF                          System.Posix.Internals  <entire-module>                 230          0    0.0    0.0     0.0    0.0
+ CAF                          Text.Read.Lex           <entire-module>                 225          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.Event.Poll          <entire-module>                 212          0    0.0    0.0     0.0    0.0
+ CAF                          GHC.Event.Thread        <entire-module>                 211          0    0.0    0.0     0.0    0.0
+ CAF:$fShowCircle2            Lv9.Ans                 <no location info>              334          0    0.0    0.0     0.0    0.0
+ CAF:$fShowPlayer2            Lv9.Ans                 <no location info>              333          0    0.0    0.0     0.0    0.0
+ CAF:$fShowPlayer4            Lv9.Ans                 <no location info>              332          0    0.0    0.0     0.0    0.0
+ CAF:$fShowPlayer6            Lv9.Ans                 <no location info>              331          0    0.0    0.0     0.0    0.0
+ CAF:$fShowPlayer8            Lv9.Ans                 <no location info>              335          0    0.0    0.0     0.0    0.0
+  showsPrec                   Lv9.Ans                 src/Lv9/Ans.hs:13:63-66         427          0    0.0    0.0     0.0    0.0
+ CAF:answerOfLv9Part6         Lv9.Ans                 <no location info>              344          0    0.0    0.0     0.0    0.0
+  answerOfLv9Part             Lv9.Ans                 src/Lv9/Ans.hs:69:1-130         397          0    0.0    0.0     0.0    0.0
+   loadGames                  Lv9.Ans                 src/Lv9/Ans.hs:19:1-104         398          0    0.0    0.0     0.0    0.0
+    readGame                  Lv9.Ans                 src/Lv9/Ans.hs:(22,1)-(29,36)   400          0    0.0    0.0     0.0    0.0
+ CAF:answerOfLv9Part9         Lv9.Ans                 <no location info>              343          0    0.0    0.0     0.0    0.0
+  readGame                    Lv9.Ans                 src/Lv9/Ans.hs:(22,1)-(29,36)   399          1    0.0    0.0     0.0    0.0
+ CAF:lvl11_r8CB               Lv9.Ans                 <no location info>              342          0    0.0    0.0     0.0    0.0
+  readGame                    Lv9.Ans                 src/Lv9/Ans.hs:(22,1)-(29,36)   406          0    0.0    0.0     0.0    0.0
+ CAF:lvl2_r8Cs                Lv9.Ans                 <no location info>              337          0    0.0    0.0     0.0    0.0
+ CAF:lvl8_r8Cy                Lv9.Ans                 <no location info>              339          0    0.0    0.0     0.0    0.0
+ CAF:main1                    Main                    <no location info>              388          0    0.0    0.0     0.0    0.0
+  main                        Main                    app/Main.hs:6:1-85              390          1    0.0    0.0     0.0    0.0
+ CAF:main2                    Main                    <no location info>              387          0    0.0    0.0     0.0    0.0
+  main                        Main                    app/Main.hs:6:1-85              392          0    0.0    0.0     0.0    0.0
+   answerOfLv9Part            Lv9.Ans                 src/Lv9/Ans.hs:69:1-130         393          1    0.0    0.0     0.0    0.0
+ CAF:main4                    Main                    <no location info>              386          0    0.0    0.0     0.0    0.0
+ CAF:number_r8Cq              Lv9.Ans                 <no location info>              336          0    0.0    0.0     0.0    0.0
+  readGame                    Lv9.Ans                 src/Lv9/Ans.hs:(22,1)-(29,36)   401          0    0.0    0.0     0.0    0.0
+   readGame.number            Lv9.Ans                 src/Lv9/Ans.hs:29:5-36          402          1    0.0    0.0     0.0    0.0
+ main                         Main                    app/Main.hs:6:1-85              391          0    0.0    0.1    68.4   98.5
+  showsPrec                   Lv9.Ans                 src/Lv9/Ans.hs:13:63-66         426          1    0.0    0.0     0.0    0.0
+  answerOfLv9Part             Lv9.Ans                 src/Lv9/Ans.hs:69:1-130         394          0    0.0    0.0    68.4   98.4
+   play                       Lv9.Ans                 src/Lv9/Ans.hs:(34,1)-(35,127)  407       8000   15.8    7.6    52.6   97.5
+    updateCircle              Lv9.Ans                 src/Lv9/Ans.hs:(45,1)-(56,24)   408       7999    0.0    9.9    36.8   87.4
+     updateCircle0            Lv9.Ans                 src/Lv9/Ans.hs:(53,28)-(55,41)  409       7652   26.3   72.7    26.3   72.7
+     updateCircle.next        Lv9.Ans                 src/Lv9/Ans.hs:51:21-69         422       7634    0.0    1.4     0.0    1.4
+      goClockWise             Lv9.Ans                 src/Lv9/Ans.hs:58:1-55          423       7634    0.0    0.0     0.0    0.0
+     updateCircle.next        Lv9.Ans                 src/Lv9/Ans.hs:46:36-87         419        347    0.0    0.0     0.0    0.1
+      goCounterClockWise      Lv9.Ans                 src/Lv9/Ans.hs:(60,1)-(65,67)   420        347    0.0    0.1     0.0    0.1
+       goCounterClockWise.res Lv9.Ans                 src/Lv9/Ans.hs:60:42-58         421        347    0.0    0.0     0.0    0.0
+     updateCircle23           Lv9.Ans                 src/Lv9/Ans.hs:(48,77)-(50,112) 413        347   10.5    3.4    10.5    3.4
+     updateCircle.succNext    Lv9.Ans                 src/Lv9/Ans.hs:47:36-81         424        346    0.0    0.0     0.0    0.0
+      goClockWise             Lv9.Ans                 src/Lv9/Ans.hs:58:1-55          425        346    0.0    0.0     0.0    0.0
+    updatePlayer              Lv9.Ans                 src/Lv9/Ans.hs:(39,1)-(43,75)   410       7999    0.0    1.0     0.0    1.0
+     pid                      Lv9.Ans                 src/Lv9/Ans.hs:13:24-26         414        347    0.0    0.0     0.0    0.0
+     score                    Lv9.Ans                 src/Lv9/Ans.hs:13:35-39         418        347    0.0    0.0     0.0    0.0
+     updatePlayer.nextPlayer  Lv9.Ans                 src/Lv9/Ans.hs:43:5-75          415        347    0.0    0.0     0.0    0.0
+      numOfPlayers            Lv9.Ans                 src/Lv9/Ans.hs:15:119-130       416        347    0.0    0.0     0.0    0.0
+    updateRound               Lv9.Ans                 src/Lv9/Ans.hs:37:1-60          411       7999    0.0    1.5     0.0    1.5
+     nextMarble               Lv9.Ans                 src/Lv9/Ans.hs:15:75-84         412       7999    0.0    0.0     0.0    0.0
+   score                      Lv9.Ans                 src/Lv9/Ans.hs:13:35-39         417         24    0.0    0.0     0.0    0.0
+   loadGames                  Lv9.Ans                 src/Lv9/Ans.hs:19:1-104         395          1   15.8    0.4    15.8    0.9
+    readGame                  Lv9.Ans                 src/Lv9/Ans.hs:(22,1)-(29,36)   403          0    0.0    0.0     0.0    0.5
+     readGame.number          Lv9.Ans                 src/Lv9/Ans.hs:29:5-36          404          0    0.0    0.4     0.0    0.4
+      gameWith                Lv9.Ans                 src/Lv9/Ans.hs:31:1-172         405          1    0.0    0.0     0.0    0.0
+   players                    Lv9.Ans                 src/Lv9/Ans.hs:15:28-34         396          1    0.0    0.0     0.0    0.0
