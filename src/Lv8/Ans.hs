@@ -1,4 +1,4 @@
-module Lv8.Ans () where
+module Lv8.Ans (answerOfLv8Part1, answerOfLv8Part2) where
 
 import Text.ParserCombinators.Parsec (ParseError, parse, many1, many, digit, sepEndBy, space )
 import Control.Arrow (right)

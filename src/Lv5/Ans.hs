@@ -1,5 +1,4 @@
-module Lv5.Ans (
-               ) where
+module Lv5.Ans (answerOfLv5Part1, answerOfLv5Part2) where
 
 import Data.List (minimumBy, maximumBy, delete, nub, sort, sortOn, deleteBy, nubBy,  foldl'
 

@@ -1,4 +1,4 @@
-module Lv7.Ans () where
+module Lv7.Ans (answerOfLv7Part1, answerOfLv7Part2) where
 
 import Text.ParserCombinators.Parsec (parse, newline, ParseError, GenParser, string, many, between, anyChar)
 import Data.List (partition, nub, sort, elem)

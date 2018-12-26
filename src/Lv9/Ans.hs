@@ -1,4 +1,4 @@
-module Lv9.Ans () where
+module Lv9.Ans (answerOfLv9Part1, answerOfLv9Part2) where
 
 import Text.ParserCombinators.ReadP (char, sepBy, endBy, ReadP, many1, satisfy, string, readP_to_S)
 import Data.Char (isDigit)
