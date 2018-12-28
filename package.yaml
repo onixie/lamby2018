@@ -25,6 +25,13 @@ dependencies:
 - array
 - time
 - containers
+- diagrams
+- diagrams-lib
+- diagrams-contrib
+- diagrams-svg
+- diagrams-core
+- diagrams-rasterific
+- colour
 
 library:
   source-dirs: src
