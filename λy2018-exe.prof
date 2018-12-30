@@ -1,87 +1,80 @@
-	Sun Dec 30 14:20 2018 Time and Allocation Profiling Report  (Final)
+	Sun Dec 30 16:16 2018 Time and Allocation Profiling Report  (Final)
 
 	   λy2018-exe +RTS -N -p -RTS
 
-	total time  =        2.69 secs   (10748 ticks @ 1000 us, 4 processors)
-	total alloc = 9,889,709,496 bytes  (excludes profiling overheads)
+	total time  =        6.44 secs   (25764 ticks @ 1000 us, 4 processors)
+	total alloc = 44,495,804,792 bytes  (excludes profiling overheads)
 
-COST CENTRE          MODULE    SRC                              %time %alloc
+COST CENTRE        MODULE    SRC                              %time %alloc
 
-findNote             Lv12.Ans  src/Lv12/Ans.hs:45:52-78          32.1    0.4
-generate.match.pts   Lv12.Ans  src/Lv12/Ans.hs:44:28-45          22.0   40.1
-generate.match.ci    Lv12.Ans  src/Lv12/Ans.hs:43:28-53          17.2    3.7
-generate.nextGen     Lv12.Ans  src/Lv12/Ans.hs:(41,5)-(42,101)   15.3   36.6
-generate.match       Lv12.Ans  src/Lv12/Ans.hs:(43,5)-(47,41)     6.2    8.6
-generate.padding     Lv12.Ans  src/Lv12/Ans.hs:(48,5)-(50,95)     3.3    6.1
-generate.trimming    Lv12.Ans  src/Lv12/Ans.hs:51:5-90            2.2    4.5
-generate.padding.end Lv12.Ans  src/Lv12/Ans.hs:49:19-48           1.5    0.0
+findNote           Lv12.Ans  src/Lv12/Ans.hs:47:63-89          70.4   81.6
+generate.nextGen   Lv12.Ans  src/Lv12/Ans.hs:(44,5)-(45,151)   14.8    9.9
+generate.match.pts Lv12.Ans  src/Lv12/Ans.hs:46:39-57          11.1    7.0
+generate.match     Lv12.Ans  src/Lv12/Ans.hs:(46,5)-(49,60)     2.3    1.0
 
 
                                                                                                        individual      inherited
 COST CENTRE                 MODULE                  SRC                             no.     entries  %time %alloc   %time %alloc
 
-MAIN                        MAIN                    <built-in>                      211          0    0.1    0.0   100.0  100.0
- CAF                        Data.Either             <entire-module>                 333          0    0.0    0.0     0.0    0.0
- CAF                        GHC.Conc.Signal         <entire-module>                 306          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.Encoding         <entire-module>                 289          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.Encoding.Iconv   <entire-module>                 287          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.Exception        <entire-module>                 281          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.FD               <entire-module>                 280          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.Handle.FD        <entire-module>                 278          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.Handle.Internals <entire-module>                 277          0    0.0    0.0     0.0    0.0
- CAF                        GHC.IO.Handle.Text      <entire-module>                 276          0    0.1    0.0     0.1    0.0
- CAF                        System.Posix.Internals  <entire-module>                 246          0    0.0    0.0     0.0    0.0
- CAF                        GHC.Event.Poll          <entire-module>                 228          0    0.0    0.0     0.0    0.0
- CAF                        GHC.Event.Thread        <entire-module>                 227          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part12     Lv12.Ans                <no location info>              388          0    0.0    0.0     0.0    0.0
-  caven                     Lv12.Ans                src/Lv12/Ans.hs:(29,1)-(33,47)  443          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part13     Lv12.Ans                <no location info>              387          0    0.0    0.0     0.0    0.0
-  note                      Lv12.Ans                src/Lv12/Ans.hs:(22,1)-(26,19)  444          1    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part15     Lv12.Ans                <no location info>              384          0    0.0    0.0     0.0    0.0
-  pot                       Lv12.Ans                src/Lv12/Ans.hs:16:1-27         433          1    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part18     Lv12.Ans                <no location info>              383          0    0.0    0.0     0.0    0.0
-  pot                       Lv12.Ans                src/Lv12/Ans.hs:16:1-27         438          0    0.0    0.0     0.0    0.0
-   empty                    Lv12.Ans                src/Lv12/Ans.hs:15:1-16         439          1    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part20     Lv12.Ans                <no location info>              382          0    0.0    0.0     0.0    0.0
-  pot                       Lv12.Ans                src/Lv12/Ans.hs:16:1-27         435          0    0.0    0.0     0.0    0.0
-   plant                    Lv12.Ans                src/Lv12/Ans.hs:14:1-16         436          1    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part24     Lv12.Ans                <no location info>              375          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part28     Lv12.Ans                <no location info>              386          0    0.0    0.0     0.0    0.0
-  initialState              Lv12.Ans                src/Lv12/Ans.hs:19:1-52         430          1    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part30     Lv12.Ans                <no location info>              385          0    0.0    0.0     0.0    0.0
-  initialState              Lv12.Ans                src/Lv12/Ans.hs:19:1-52         432          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part31     Lv12.Ans                <no location info>              376          0    0.0    0.0     0.0    0.0
- CAF:answerOfLv12Part9      Lv12.Ans                <no location info>              389          0    0.0    0.0     0.0    0.0
-  caven                     Lv12.Ans                src/Lv12/Ans.hs:(29,1)-(33,47)  428          1    0.0    0.0     0.0    0.0
- CAF:lvl4_rdib              Lv12.Ans                <no location info>              377          0    0.0    0.0     0.0    0.0
- CAF:main1                  Main                    <no location info>              420          0    0.0    0.0     0.0    0.0
-  main                      Main                    app/Main.hs:10:1-104            422          1    0.0    0.0     0.0    0.0
- CAF:main2                  Main                    <no location info>              419          0    0.0    0.0     0.0    0.0
-  main                      Main                    app/Main.hs:10:1-104            424          0    0.0    0.0     0.0    0.0
-   answerOfLv12Part2        Lv12.Ans                src/Lv12/Ans.hs:(57,1)-(58,100) 425          1    0.0    0.0     0.0    0.0
- CAF:main4                  Main                    <no location info>              418          0    0.0    0.0     0.0    0.0
- main                       Main                    app/Main.hs:10:1-104            423          0    0.0    0.0    99.9  100.0
-  answerOfLv12Part2         Lv12.Ans                src/Lv12/Ans.hs:(57,1)-(58,100) 426          0    0.0    0.0    99.9  100.0
-   generate                 Lv12.Ans                src/Lv12/Ans.hs:(38,1)-(51,90)  449      50001    0.1    0.1    99.8  100.0
-    generate.nextGen        Lv12.Ans                src/Lv12/Ans.hs:(41,5)-(42,101) 453    9692520   15.3   36.6    92.7   89.3
-     generate.match         Lv12.Ans                src/Lv12/Ans.hs:(43,5)-(47,41)  455    9642520    6.2    8.6    77.4   52.7
-      findNote              Lv12.Ans                src/Lv12/Ans.hs:45:52-78        456    9642520   32.1    0.4    32.1    0.4
-      generate.match.pts    Lv12.Ans                src/Lv12/Ans.hs:44:28-45        457    9642520   22.0   40.1    22.0   40.1
-      generate.match.ci     Lv12.Ans                src/Lv12/Ans.hs:43:28-53        459    9229760   17.2    3.7    17.2    3.7
-    generate.padding        Lv12.Ans                src/Lv12/Ans.hs:(48,5)-(50,95)  451      50000    3.3    6.1     4.8    6.1
-     generate.padding.end   Lv12.Ans                src/Lv12/Ans.hs:49:19-48        458      50000    1.5    0.0     1.5    0.0
-     generate.padding.start Lv12.Ans                src/Lv12/Ans.hs:48:19-48        452      50000    0.1    0.0     0.1    0.0
-    generate.trimming       Lv12.Ans                src/Lv12/Ans.hs:51:5-90         454      50000    2.2    4.5     2.2    4.5
-   fmap                     Lv12.Ans                src/Lv12/Ans.hs:12:77-83        448          1    0.0    0.0     0.0    0.0
-   pots                     Lv12.Ans                src/Lv12/Ans.hs:12:24-27        450          1    0.0    0.0     0.0    0.0
-   readCaven                Lv12.Ans                src/Lv12/Ans.hs:36:1-72         427          1    0.0    0.0     0.0    0.0
-    caven                   Lv12.Ans                src/Lv12/Ans.hs:(29,1)-(33,47)  429          0    0.0    0.0     0.0    0.0
-     initialState           Lv12.Ans                src/Lv12/Ans.hs:19:1-52         431          0    0.0    0.0     0.0    0.0
-      pot                   Lv12.Ans                src/Lv12/Ans.hs:16:1-27         434          0    0.0    0.0     0.0    0.0
-       empty                Lv12.Ans                src/Lv12/Ans.hs:15:1-16         440          0    0.0    0.0     0.0    0.0
-        plant               Lv12.Ans                src/Lv12/Ans.hs:14:1-16         441          0    0.0    0.0     0.0    0.0
-         note               Lv12.Ans                src/Lv12/Ans.hs:(22,1)-(26,19)  445          0    0.0    0.0     0.0    0.0
-       plant                Lv12.Ans                src/Lv12/Ans.hs:14:1-16         437          0    0.0    0.0     0.0    0.0
-        empty               Lv12.Ans                src/Lv12/Ans.hs:15:1-16         442          0    0.0    0.0     0.0    0.0
-        note                Lv12.Ans                src/Lv12/Ans.hs:(22,1)-(26,19)  446          0    0.0    0.0     0.0    0.0
-         empty              Lv12.Ans                src/Lv12/Ans.hs:15:1-16         447          0    0.0    0.0     0.0    0.0
+MAIN                        MAIN                    <built-in>                      218          0    0.0    0.0   100.0  100.0
+ CAF                        Data.Either             <entire-module>                 341          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.Conc.Signal         <entire-module>                 314          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding         <entire-module>                 296          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Encoding.Iconv   <entire-module>                 294          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Exception        <entire-module>                 288          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.FD               <entire-module>                 287          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Handle.FD        <entire-module>                 285          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Handle.Internals <entire-module>                 284          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.IO.Handle.Text      <entire-module>                 283          0    0.0    0.0     0.0    0.0
+ CAF                        System.Posix.Internals  <entire-module>                 253          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.Event.Poll          <entire-module>                 235          0    0.0    0.0     0.0    0.0
+ CAF                        GHC.Event.Thread        <entire-module>                 234          0    0.0    0.0     0.0    0.0
+ CAF:answerOfLv12Part11     Lv12.Ans                <no location info>              398          0    0.0    0.0     0.0    0.0
+  caven                     Lv12.Ans                src/Lv12/Ans.hs:(31,1)-(35,47)  442          1    0.0    0.0     0.0    0.0
+ CAF:answerOfLv12Part14     Lv12.Ans                <no location info>              397          0    0.0    0.0     0.0    0.0
+  caven                     Lv12.Ans                src/Lv12/Ans.hs:(31,1)-(35,47)  456          0    0.0    0.0     0.0    0.0
+ CAF:answerOfLv12Part15     Lv12.Ans                <no location info>              396          0    0.0    0.0     0.0    0.0
+  note                      Lv12.Ans                src/Lv12/Ans.hs:(24,1)-(28,19)  457          1    0.0    0.0     0.0    0.0
+ CAF:answerOfLv12Part17     Lv12.Ans                <no location info>              395          0    0.0    0.0     0.0    0.0
+  initialState              Lv12.Ans                src/Lv12/Ans.hs:21:1-76         444          1    0.0    0.0     0.0    0.0
+ CAF:lvl3_rcv8              Lv12.Ans                <no location info>              386          0    0.0    0.0     0.0    0.0
+ CAF:lvl7_rcvc              Lv12.Ans                <no location info>              389          0    0.0    0.0     0.0    0.0
+ CAF:m1_rcve                Lv12.Ans                <no location info>              390          0    0.0    0.0     0.0    0.0
+ CAF:main1                  Main                    <no location info>              434          0    0.0    0.0     0.0    0.0
+  main                      Main                    app/Main.hs:10:1-103            436          1    0.0    0.0     0.0    0.0
+ CAF:main2                  Main                    <no location info>              433          0    0.0    0.0     0.0    0.0
+  main                      Main                    app/Main.hs:10:1-103            438          0    0.0    0.0     0.0    0.0
+   answerOfLv12Part         Lv12.Ans                src/Lv12/Ans.hs:(55,1)-(56,139) 439          1    0.0    0.0     0.0    0.0
+ CAF:main4                  Main                    <no location info>              432          0    0.0    0.0     0.0    0.0
+ CAF:pot1_rcvx              Lv12.Ans                <no location info>              393          0    0.0    0.0     0.0    0.0
+  pot                       Lv12.Ans                src/Lv12/Ans.hs:18:1-27         451          0    0.0    0.0     0.0    0.0
+   empty                    Lv12.Ans                src/Lv12/Ans.hs:17:1-16         452          1    0.0    0.0     0.0    0.0
+ CAF:pot4_rcvA              Lv12.Ans                <no location info>              394          0    0.0    0.0     0.0    0.0
+  pot                       Lv12.Ans                src/Lv12/Ans.hs:18:1-27         446          1    0.0    0.0     0.0    0.0
+ CAF:pot_rcvw               Lv12.Ans                <no location info>              392          0    0.0    0.0     0.0    0.0
+  pot                       Lv12.Ans                src/Lv12/Ans.hs:18:1-27         448          0    0.0    0.0     0.0    0.0
+   plant                    Lv12.Ans                src/Lv12/Ans.hs:16:1-16         449          1    0.0    0.0     0.0    0.0
+ main                       Main                    app/Main.hs:10:1-103            437          0    0.0    0.0   100.0  100.0
+  answerOfLv12Part          Lv12.Ans                src/Lv12/Ans.hs:(55,1)-(56,139) 440          0    0.0    0.0   100.0  100.0
+   generate                 Lv12.Ans                src/Lv12/Ans.hs:(41,1)-(53,76)  462      50001    0.1    0.0   100.0  100.0
+    generate.nextGen        Lv12.Ans                src/Lv12/Ans.hs:(44,5)-(45,151) 467    9692520   14.8    9.9    98.6   99.6
+     generate.match         Lv12.Ans                src/Lv12/Ans.hs:(46,5)-(49,60)  469    9642520    2.3    1.0    83.7   89.6
+      findNote              Lv12.Ans                src/Lv12/Ans.hs:47:63-89        470    9642520   70.4   81.6    70.4   81.6
+      generate.match.pts    Lv12.Ans                src/Lv12/Ans.hs:46:39-57        471    9642520   11.1    7.0    11.1    7.0
+    generate.padding        Lv12.Ans                src/Lv12/Ans.hs:(50,5)-(52,138) 464      50000    0.3    0.2     0.4    0.2
+     generate.padding.end   Lv12.Ans                src/Lv12/Ans.hs:51:19-80        466      50000    0.0    0.0     0.0    0.0
+     generate.padding.start Lv12.Ans                src/Lv12/Ans.hs:50:19-55        465      50000    0.0    0.0     0.0    0.0
+    generate.trimming       Lv12.Ans                src/Lv12/Ans.hs:53:5-76         468      50000    0.9    0.2     0.9    0.2
+   fmap                     Lv12.Ans                src/Lv12/Ans.hs:14:81-87        461          1    0.0    0.0     0.0    0.0
+   pots                     Lv12.Ans                src/Lv12/Ans.hs:14:24-27        463          1    0.0    0.0     0.0    0.0
+   readCaven                Lv12.Ans                src/Lv12/Ans.hs:38:1-72         441          1    0.0    0.0     0.0    0.0
+    caven                   Lv12.Ans                src/Lv12/Ans.hs:(31,1)-(35,47)  443          0    0.0    0.0     0.0    0.0
+     initialState           Lv12.Ans                src/Lv12/Ans.hs:21:1-76         445          0    0.0    0.0     0.0    0.0
+      pot                   Lv12.Ans                src/Lv12/Ans.hs:18:1-27         447          0    0.0    0.0     0.0    0.0
+       empty                Lv12.Ans                src/Lv12/Ans.hs:17:1-16         453          0    0.0    0.0     0.0    0.0
+        plant               Lv12.Ans                src/Lv12/Ans.hs:16:1-16         454          0    0.0    0.0     0.0    0.0
+         note               Lv12.Ans                src/Lv12/Ans.hs:(24,1)-(28,19)  458          0    0.0    0.0     0.0    0.0
+       plant                Lv12.Ans                src/Lv12/Ans.hs:16:1-16         450          0    0.0    0.0     0.0    0.0
+        empty               Lv12.Ans                src/Lv12/Ans.hs:17:1-16         455          0    0.0    0.0     0.0    0.0
+        note                Lv12.Ans                src/Lv12/Ans.hs:(24,1)-(28,19)  459          0    0.0    0.0     0.0    0.0
+         empty              Lv12.Ans                src/Lv12/Ans.hs:17:1-16         460          0    0.0    0.0     0.0    0.0
