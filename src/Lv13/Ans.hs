@@ -3,7 +3,7 @@ module Lv13.Ans () where
 
 import Control.Arrow (second, first)
 import Data.Array (Array, array, assocs, bounds, elems, (!), (//))
-import Data.List (group, nub, sortOn, filter, map)
+import Data.List (groupBy, group, nub, sortOn, filter, map)
 import Data.Function (on, (&))
 import Data.Tuple (swap)
 
@@ -79,7 +79,7 @@ pathUnder tracks Cart{loc=loc@(x, y)} = if tracks!(x, y) `elem` "-|+/\\"
       isCurveBackSlash f b = f =='/' && b == '/'
       isCurveSlash f b = f == '\\' && b =='\\'
 
-move tracks cart@Cart{loc=(x, y), face} = case face of
+moveOn cart@Cart{loc=(x, y), face} tracks  = case face of
   '>' -> case tracks!(x+1, y) of
            '-'  -> cart{loc=(x+1, y)}
            '/'  -> cart{loc=(x+1, y),face='^'}
@@ -114,7 +114,7 @@ move tracks cart@Cart{loc=(x, y), face} = case face of
    turn cart@Cart{face='<', dir=R} = cart{face='^', dir=L}
    turn cart@Cart{face='^', dir=R} = cart{face='>', dir=L}
 
-tick1 system@System{tracks, carts, tick} = system{carts=sort $ map (move tracks) carts, tick=tick+1}
+tick1 system@System{tracks, carts, tick} = system{carts=sort $ map (`moveOn` tracks) carts, tick=tick+1}
 
 loop n system@System{carts} | hasCollision carts = system
                             | n > 0 = loop (n-1) $ system & tick1
@@ -126,4 +126,16 @@ sort = sortOn (swap . loc)
 answerOfLv13Part1 = do 
   System{carts} <- readSystem >>= return . loop 1000
   return . (!!0) . filter ((>1).length) . group $ map loc carts
-  
+
+-- collision removal version
+tick1' system@System{tracks, carts, tick} = system{carts=moveAndRemoveCollision tracks carts [], tick=tick+1} where
+  moveAndRemoveCollision tracks (c:cs) mcs = let c' = c `moveOn` tracks 
+                                                 cs' = filter ((loc c' /=) . loc) cs
+                                                 mcs' = filter ((loc c' /=) . loc) mcs 
+                                                 collided = length cs' /= length cs || length mcs' /= length mcs in
+                                               moveAndRemoveCollision tracks cs' (if collided then mcs' else c':mcs')
+  moveAndRemoveCollision _ [] mcs = sort mcs
+
+loop' n system@System{carts} | length carts == 1 = system
+                             | n > 0 = loop' (n-1) $ system & tick1'
+                             | otherwise = system
